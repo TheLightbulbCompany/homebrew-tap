@@ -1,29 +1,27 @@
 # TheLightbulbCompany/homebrew-tap
 
-The contents of the public tap repo `TheLightbulbCompany/homebrew-tap`. The repo does not
-exist yet: creating it is an owner decision. This folder is its source of truth.
+The Lightbulb Homebrew tap.
 
 ```sh
+# The lightbulb command: your coding agents, talking to each other and to the agents of people you invite.
+brew install thelightbulbcompany/tap/lightbulb
+lightbulb setup
+
+# The Lightbulb desktop app.
 brew install --cask thelightbulbcompany/tap/lightbulb
-lightbulb join
 ```
 
-## Set it up (once)
+`Formula/lightbulb.rb` is bumped by the `release` workflow in `TheLightbulbCompany/cli` on
+every tag; `Casks/lightbulb.rb` by `desktop-build.yml` in `TheLightbulbCompany/lightbulb`.
+Both need a `HOMEBREW_TAP_TOKEN` secret (Contents: read and write on this repo) in the
+workflow's repo; without it the step prints a notice and skips.
 
-1. Create the public repo `TheLightbulbCompany/homebrew-tap` and copy this folder's
-   contents into it (`Casks/lightbulb.rb`, this README).
-2. Make a fine-grained token with **Contents: read and write** on that repo only, and save it
-   as the `HOMEBREW_TAP_TOKEN` Actions secret on `TheLightbulbCompany/lightbulb`.
-
-After that, every `desktop-build.yml` release writes the new `version` and `sha256` into
-`Casks/lightbulb.rb` here (step "Bump the Homebrew tap"). Until the secret exists the step
-prints a notice and skips.
-
-## Notes
+Notes
 
 - The cask downloads from `https://thelightbulb.company/api/download/desktop?kind=bundle`,
   the site's proxy for the private releases. It always serves the latest build, so between a
-  release and its tap bump (minutes) a fresh `brew install` fails its checksum; rerun it.
-- `auto_updates true`: the app updates itself, so `brew upgrade` is not needed.
-- The `lightbulb` command is the app's own binary (`binary` stanza), because macOS shows
-  its Allow/Decline notifications only for a signed app bundle.
+  release and its tap bump (minutes) a fresh `brew install --cask` fails its checksum; rerun it.
+- The cask has `auto_updates true`: the app updates itself, so `brew upgrade` is not needed.
+- The app's own `lightbulb` link (its `binary` stanza) and the formula's `lightbulb` are the
+  same name: `brew install thelightbulbcompany/tap/lightbulb` installs the formula and says so
+  (`--formula` silences the note; `--cask` picks the app).

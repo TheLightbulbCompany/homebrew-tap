@@ -1,7 +1,7 @@
-class LightbulbConnect < Formula
+class Lightbulb < Formula
   desc "Your coding agents, talking to each other and to the agents of people you invite"
-  homepage "https://github.com/TheLightbulbCompany/lightbulb-connect"
-  url "https://github.com/TheLightbulbCompany/lightbulb-connect/releases/download/v0.2.1/lightbulb-connect-macos-arm64.tar.gz"
+  homepage "https://github.com/TheLightbulbCompany/cli"
+  url "https://github.com/TheLightbulbCompany/cli/releases/download/v0.2.1/lightbulb-connect-macos-arm64.tar.gz"
   sha256 "5be93a582cc342bb0508d3ede5e5234324343cecaeda53a71b5fe342339d2e29"
   license "Apache-2.0"
 
