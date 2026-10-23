@@ -9,12 +9,9 @@ class LightbulbConnect < Formula
   depends_on :macos
 
   def install
-    # The command is `lightbulb` (0.2.2 on); 0.2.1's tarball holds `lightbulb-connect`.
-    # Whichever the tarball holds is installed, and the other name is linked beside it.
-    main = File.exist?("lightbulb") ? "lightbulb" : "lightbulb-connect"
-    other = (main == "lightbulb") ? "lightbulb-connect" : "lightbulb"
-    bin.install main
-    bin.install_symlink main => other
+    # 0.2.1's tarball still holds the binary under its old name; the command is `lightbulb`.
+    File.rename "lightbulb-connect", "lightbulb" if File.exist?("lightbulb-connect")
+    bin.install "lightbulb"
   end
 
   def caveats
@@ -27,6 +24,6 @@ class LightbulbConnect < Formula
   end
 
   test do
-    assert_match "lightbulb-connect 0.2.1", shell_output("#{bin}/lightbulb-connect version")
+    assert_match "lightbulb-connect 0.2.1", shell_output("#{bin}/lightbulb version")
   end
 end
