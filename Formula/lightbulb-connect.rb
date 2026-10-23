@@ -9,15 +9,20 @@ class LightbulbConnect < Formula
   depends_on :macos
 
   def install
-    bin.install "lightbulb-connect"
+    # The command is `lightbulb` (0.2.2 on); 0.2.1's tarball holds `lightbulb-connect`.
+    # Whichever the tarball holds is installed, and the other name is linked beside it.
+    main = File.exist?("lightbulb") ? "lightbulb" : "lightbulb-connect"
+    other = (main == "lightbulb") ? "lightbulb-connect" : "lightbulb"
+    bin.install main
+    bin.install_symlink main => other
   end
 
   def caveats
     <<~EOS
       Finish the setup (wires Claude Code, Codex, Cursor and Grok CLI and starts the background service):
-        lightbulb-connect setup
-      After `brew upgrade`, run `lightbulb-connect setup` again so the background service moves to the new version.
-      Everything off and out: lightbulb-connect setup --remove
+        lightbulb setup
+      After `brew upgrade`, run `lightbulb setup` again so the background service moves to the new version.
+      Everything off and out: lightbulb setup --remove
     EOS
   end
 
