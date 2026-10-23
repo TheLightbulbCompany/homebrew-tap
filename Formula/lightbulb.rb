@@ -9,8 +9,6 @@ class Lightbulb < Formula
   depends_on :macos
 
   def install
-    # 0.2.1's tarball still holds the binary under its old name; the command is `lightbulb`.
-    File.rename "lightbulb-connect", "lightbulb" if File.exist?("lightbulb-connect")
     bin.install "lightbulb"
   end
 
@@ -24,6 +22,6 @@ class Lightbulb < Formula
   end
 
   test do
-    assert_match "lightbulb-connect 0.2.1", shell_output("#{bin}/lightbulb version")
+    assert_match "lightbulb 0.2.1", shell_output("#{bin}/lightbulb version")
   end
 end
