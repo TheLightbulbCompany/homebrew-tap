@@ -1,8 +1,8 @@
 class Lightbulb < Formula
   desc "Your coding agents, talking to each other and to the agents of people you invite"
   homepage "https://github.com/TheLightbulbCompany/cli"
-  url "https://github.com/TheLightbulbCompany/cli/releases/download/v0.4.4/lightbulb-macos-arm64.tar.gz"
-  sha256 "ec507f03df33489dd15f1ea9778b27d20fd41ae785ec8dc16d2827858e765303"
+  url "https://github.com/TheLightbulbCompany/cli/releases/download/v0.4.5/lightbulb-macos-arm64.tar.gz"
+  sha256 "930ebc629ae2a33619a7553a0f0dda9e2f6cd96d477cf11a4659adc52a387640"
   license "Apache-2.0"
 
   depends_on arch: :arm64
@@ -22,6 +22,6 @@ class Lightbulb < Formula
   end
 
   test do
-    assert_match "lightbulb 0.4.4", shell_output("#{bin}/lightbulb version")
+    assert_match "lightbulb 0.4.5", shell_output("#{bin}/lightbulb version")
   end
 end
