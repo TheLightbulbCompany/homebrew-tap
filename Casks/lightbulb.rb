@@ -1,8 +1,8 @@
 # Source of truth: TheLightbulbCompany/lightbulb packaging/homebrew-tap/Casks/lightbulb.rb.
 # desktop-build.yml writes `version` and `sha256` into the tap on every desktop release.
 cask "lightbulb" do
-  version "0.4.945"
-  sha256 "f4d244646d4bebec78e9338d546207119459d0ca21ad03f4fa651132bc8ec20c"
+  version "0.4.947"
+  sha256 "56b7e1e535303a417700f65327db0b8d04b27160921f587fba52e1522ff7b6f4"
 
   # Always the latest signed build: the repo's releases are private, so the site proxies them.
   # The tap is bumped minutes after each release, so `version` and `sha256` follow it.
