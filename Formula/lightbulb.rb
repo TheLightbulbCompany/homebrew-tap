@@ -14,7 +14,7 @@ class Lightbulb < Formula
 
   def caveats
     <<~EOS
-      Finish the setup (wires Claude Code, Codex, Cursor and Grok CLI and starts the background service):
+      Finish the setup (wires Claude Code, Codex, Cursor, Grok CLI and OpenCode and starts the background service):
         lightbulb setup
       After `brew upgrade`, run `lightbulb setup` again so the background service moves to the new version.
       Everything off and out: lightbulb setup --remove
