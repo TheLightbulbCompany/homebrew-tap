@@ -8,16 +8,16 @@ cask "lightbulb" do
   # The tap is bumped minutes after each release, so `version` and `sha256` follow it.
   url "https://thelightbulb.company/api/download/desktop?arch=aarch64&kind=bundle"
   name "Lightbulb"
-  desc "Share Claude Code, Codex, Cursor and Grok CLI sessions with your Lightbulb workspace"
-  homepage "https://thelightbulb.company/docs/agent-network-quickstart"
+  desc "Share Claude Code, Codex, Cursor, Grok CLI and OpenCode sessions with your Lightbulb workspace"
+  homepage "https://thelightbulb.company/network"
 
   # The app updates itself (Tauri updater); `brew upgrade` is not needed to stay current.
   auto_updates true
   depends_on arch: :arm64
 
   app "Lightbulb.app"
-  # The CLI is the app's own binary: macOS notifications need the signed bundle around it.
-  binary "#{appdir}/Lightbulb.app/Contents/MacOS/lightbulb-desktop", target: "lightbulb"
+  # No `binary` stanza: the `lightbulb` command is the network engine's (the app bundles it,
+  # and so does the `lightbulb` formula), never this cask's.
 
   uninstall launchctl: "company.thelightbulb.serve",
             delete:    "~/Library/LaunchAgents/company.thelightbulb.serve.plist"
@@ -29,10 +29,10 @@ cask "lightbulb" do
   ]
 
   caveats <<~EOS
-    Connect this Mac to your workspace:
-      lightbulb join
+    The app includes the Lightbulb network engine. Open the app once: it sets up the
+    engine, and the `lightbulb` command comes from it (in ~/.local/bin).
+    You do not need the `lightbulb` formula too: the app keeps the engine current.
 
-    Before uninstalling, run `lightbulb leave`: it stops the background service and
-    removes the shell block. What else `join` edits is listed at #{homepage}.
+    To take the engine out before uninstalling: lightbulb setup --remove
   EOS
 end
