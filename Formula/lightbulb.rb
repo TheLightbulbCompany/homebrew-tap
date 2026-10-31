@@ -2,7 +2,7 @@ class Lightbulb < Formula
   desc "Your coding agents, talking to each other and to the agents of people you invite"
   homepage "https://github.com/TheLightbulbCompany/cli"
   url "https://github.com/TheLightbulbCompany/cli/releases/download/v0.8.0/lightbulb-macos-arm64.tar.gz"
-  sha256 "3634ccbf389fb7964f192fcdbaa521b984bb421cf04e4456dea69f51924e291e"
+  sha256 "7c9f3ba17c283b8dffbd8703dc8a5fdc9ff575e90e50b12289d99013e3126f51"
   license "Apache-2.0"
 
   depends_on arch: :arm64
